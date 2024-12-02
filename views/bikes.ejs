@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bikes</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: #f1c40f;
+}
+
+header nav a.active {
+  color: #f1c40f;
+  text-decoration: underline;
+}
+
+/* Main Section */
+main {
+  padding: 20px;
+}
+
+.bike-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.bike-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bike-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bike-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bike-card h3 {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: #2c3e50;
+}
+
+.bike-card p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #7f8c8d;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+    margin: 0 10px;
+  }
+}
+
+</style>
+<body>
+  <header>
+    <h1>Bikes</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/bikes" class="active">Bikes</a>
+      <a href="/rentals">Rentals</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="bike-list">
+      <% if (bikes.length > 0) { %>
+        <% bikes.forEach((bike) => { %>
+          <div class="bike-card">
+            <img src="<%= bike.imageUrl %>" alt="<%= bike.name %>">
+            <h3><%= bike.name %></h3>
+            <p>Selling Price: ₹<%= bike.sellingPrice %></p>
+            <p>Available: <%= bike.quantity %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No bikes available at the moment.</p>
+      <% } %>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Royal Bike Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Trip</title>
+  <style>
+    /* General Body Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2c2f38; /* Dark background */
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: flex-start; /* Align content at the top */
+      flex-direction: column;
+      height: 200vh;
+      color: #ddd; /* Light text color */
+      padding-top: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Main Heading Styling */
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #f1f1f1; /* Lighter heading color */
+      animation: fadeIn 2s ease-in-out; /* Apply fade-in animation */
+      width: 100%;
+      padding-top: 0; /* Ensures the heading stays at the top */
+    }
+
+    /* Form Styling */
+    form {
+      background-color: #3a434d; /* Dark form background */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: slideIn 1s ease-in-out; /* Apply slide-in animation */
+    }
+
+    form div {
+      margin-bottom: 20px;
+    }
+
+    form label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #f1f1f1; /* Light text for labels */
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="url"],
+    form input[type="date"],
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 5px 0;
+      border: 1px solid #444;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+      background-color: #444; /* Dark input background */
+      color: #ddd; /* Light text in input fields */
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form button {
+      background-color: #007BFF; /* Primary button color */
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Message Style */
+    p {
+      text-align: center;
+      color: #d9534f;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Link Style */
+    a {
+      display: inline-block;
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 14px 20px;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Different Button Colors */
+    .view-trips-btn {
+      background-color: #28a745; /* Green for View Trips */
+      color: white;
+      margin-top: 50px;
+      margin-left: 415px;
+    }
+
+    .view-trips-btn:hover {
+      background-color: #218838;
+    }
+
+    .admin-dashboard-btn {
+      background-color: #ffc107; /* Yellow for Admin Dashboard */
+    }
+
+    .admin-dashboard-btn:hover {
+      background-color: #e0a800;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      body {
+        padding-top: 10px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      form button {
+        font-size: 16px;
+      }
+
+      form input[type="text"],
+      form input[type="number"],
+      form input[type="url"],
+      form input[type="date"],
+      form textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      a {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Add New Trip</h1>
+  <form action="/admin/add-trip" method="POST">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" required />
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea name="description" required></textarea>
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" name="price" required />
+    </div>
+    <div>
+      <label for="imageUrl">Image URL:</label>
+      <input type="url" name="imageUrl" required />
+    </div>
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input type="date" name="startDate" required />
+    </div>
+    <div>
+      <label for="endDate">End Date:</label>
+      <input type="date" name="endDate" required />
+    </div>
+    <div>
+      <label for="totalSeats">Total Seats:</label>
+      <input type="number" name="totalSeats" required />
+    </div>
+    <div>
+      <label for="numberOfSeatsLeft">Seats Left:</label>
+      <input type="number" name="numberOfSeatsLeft" required />
+    </div>
+    <button type="submit">Add Trip</button>
+  </form>
+
+  <% if (message) { %>
+    <p><%= message %></p>
+  <% } %>
+
+  <!-- Add Buttons -->
+  <a href="/admin/view-trips" class="view-trips-btn">View Trips</a>
+  <a href="/admin/dashboard" class="admin-dashboard-btn">Admin Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Bike</title>
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #34495e); /* Darker Gradient Background */
+      color: #ecf0f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      background: #2d3436; /* Darker container background */
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #f39c12; /* Golden-yellow for headings */
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input {
+      padding: 12px;
+      border: 1px solid #7f8c8d; /* Darker input border */
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #34495e;
+      color: #ecf0f1;
+      transition: all 0.3s ease;
+    }
+
+    form input:focus {
+      border-color: #f39c12;
+      box-shadow: 0 0 8px rgba(243, 156, 18, 0.6);
+      outline: none;
+    }
+
+    form button {
+      padding: 14px;
+      background: #f39c12; /* Golden-yellow button */
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #f1c40f;
+    }
+
+    .delete-btn {
+      padding: 14px;
+      background: #e74c3c; /* Red for delete button */
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      background: #1e272e;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #f39c12;
+      color: #1e272e;
+      transform: scale(1.05);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Update Bike Details</h1>
+
+    <!-- Update Bike Form -->
+    <form action="/admin/update-bike/<%= bike._id %>" method="POST">
+      <input type="text" name="name" value="<%= bike.name %>" placeholder="Enter Bike Name" required />
+      <input type="text" name="type" value="<%= bike.type %>" placeholder="Enter Bike Type" required />
+      <input type="number" name="sellingPrice" value="<%= bike.sellingPrice %>" placeholder="Enter Selling Price" required />
+      <input type="number" name="rentalPricePerDay" value="<%= bike.rentalPricePerDay %>" placeholder="Enter Rental Price" required />
+      <input type="number" name="quantity" value="<%= bike.quantity %>" placeholder="Enter Quantity" required />
+      <input type="url" name="imageUrl" value="<%= bike.imageUrl %>" placeholder="Enter Image URL" />
+
+      <button type="submit">Update Bike</button>
+    </form>
+
+    <!-- Delete Button -->
+    <form action="/admin/delete-bike/<%= bike._id %>" method="POST" style="margin-top: 20px;">
+      <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this bike?');">Delete Bike</button>
+    </form>
+
+    <a href="/admin/dashboard" class="back-btn">Back to Dashboard</a>
+  </div>
+
+</body>
+</html>

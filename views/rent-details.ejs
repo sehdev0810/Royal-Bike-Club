@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Details</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your custom CSS if any -->
+</head>
+<style>
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and overall page styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Header and navigation styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #008CBA;
+    text-decoration: underline;
+}
+
+/* Main section and rent details styles */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.rent-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.rent-details .bike-info {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.rent-details .bike-info img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.rent-details .bike-info h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.rent-details .bike-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.rent-details .bike-info button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.rent-details .bike-info button:hover {
+    background-color: #005f75;
+    transform: scale(1.05);
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    header nav ul li {
+        margin-bottom: 15px;
+    }
+
+    .rent-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rent-details .bike-info {
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .rent-details .bike-info button {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+}
+
+</style>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/rent">Rent Bikes</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Bike Rental Details</h1>
+            <div class="rent-details">
+                <!-- Check if bike details exist -->
+                <% if (bikeDetails) { %>
+                    <div class="bike-info">
+                        <img src="<%= bikeDetails.imageUrl %>" alt="<%= bikeDetails.name %>" class="bike-image" />
+                        <h3><%= bikeDetails.name %></h3>
+                        <p><strong>Type:</strong> <%= bikeDetails.type %></p>
+                        <p><strong>Price per Day:</strong> $<%= bikeDetails.rentalPricePerDay %></p>
+                        <p><strong>Quantity Available:</strong> <%= bikeDetails.quantity %></p>
+                        <button onclick="window.location.href='/rent/<%= bikeDetails._id %>'">Book Now</button>
+                    </div>
+                <% } else { %>
+                    <p>Sorry, the bike details could not be found.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Royal Bike Club. All rights reserved.</p>
+    </footer>
+</body>
+</html>

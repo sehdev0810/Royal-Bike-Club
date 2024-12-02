@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bike Details</title>
+</head>
+<body>
+
+  <h1>Bike Details</h1>
+
+  <div>
+    <h2><%= bike.name %></h2>
+    <p><strong>Type:</strong> <%= bike.type %></p>
+    <p><strong>Price:</strong> $<%= bike.price %></p>
+    <p><strong>Rental Price:</strong> $<%= bike.rentalPrice %> per day</p>
+    <p><strong>Sell Price:</strong> $<%= bike.sellPrice %></p>
+    <p><strong>Description:</strong> <%= bike.description %></p>
+    <p><strong>Location:</strong> <%= bike.location %></p>
+    <p><strong>Condition:</strong> <%= bike.condition %></p>
+    <p><strong>Brand:</strong> <%= bike.brand %></p>
+    <p><strong>Model Year:</strong> <%= bike.modelYear %></p>
+    <img src="<%= bike.imageUrl %>" alt="<%= bike.name %>" width="300"><br>
+
+    <a href="/">Back to Home</a>
+  </div>
+
+</body>
+</html>

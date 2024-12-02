@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #1b1b2f, #3e3e58); /* Dark gradient */
+      color: #f0f0f0; /* Light font color for contrast */
+    }
+
+    .header {
+      background: #4a90e2; /* Vibrant blue */
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem auto;
+      max-width: 1200px;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #29293d; /* Deep gray */
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      margin: 1rem;
+      width: 280px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      border-color: #4a90e2; /* Vibrant blue border */
+    }
+
+    .card h2 {
+      color: #4a90e2; /* Vibrant blue */
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #c0c0c0; /* Soft gray */
+      margin-bottom: 1.5rem;
+    }
+
+    .card button {
+      background: #4a90e2; /* Vibrant blue button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card button:hover {
+      background: #1f78d1; /* Darker blue for hover */
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.6); /* Glow effect */
+    }
+
+    .logout {
+      margin: 2rem;
+      text-align: center;
+    }
+
+    .logout a {
+      text-decoration: none;
+      color: white;
+      background: #ff4757; /* Vibrant red */
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .logout a:hover {
+      background: #e84141; /* Darker red for hover */
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.6); /* Glow effect */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Welcome to the Admin Dashboard</h1>
+  </div>
+
+  <div class="container">
+    <!-- Add a Bike Card -->
+    <div class="card">
+      <h2>Add a Bike</h2>
+      <p>Add new bikes to your inventory for sale or rental.</p>
+      <button onclick="window.location.href='/admin/add-bike-form'">Go</button>
+    </div>
+
+    <!-- Add Trip Details Card -->
+    <div class="card">
+      <h2>Add Trip Details</h2>
+      <p>Add trips and enjoy your tour.</p>
+      <button onclick="window.location.href='/admin/add-trip'">Go</button>
+    </div>
+
+    <!-- View Bikes Card -->
+    <div class="card">
+      <h2>View Bikes</h2>
+      <p>View all bikes currently in your inventory.</p>
+      <button onclick="window.location.href='/admin/view-bikes'">Go</button>
+    </div>
+
+    <!-- View Trips Card -->
+    <div class="card">
+      <h2>View Trips</h2>
+      <p>View all trips and their details.</p>
+      <button onclick="window.location.href='/admin/view-trips'">Go</button>
+    </div>
+
+    <!-- Calculate Profit Card -->
+    <div class="card">
+      <h2>Calculate Profit</h2>
+      <p>Analyze your profit and earnings.</p>
+      <button onclick="window.location.href='/admin/calculate-profit'">Go</button>
+    </div>
+
+    <!-- User Queries Card -->
+    <div class="card">
+      <h2>User Queries</h2>
+      <p>View and respond to queries submitted by users.</p>
+      <button onclick="window.location.href='/admin/user-queries'">Go</button>
+    </div>
+
+    <!-- User Feedback Card -->
+    <div class="card">
+      <h2>User Feedback</h2>
+      <p>Read feedback from your customers to improve services.</p>
+      <button onclick="window.location.href='/admin/user-feedback'">Go</button>
+    </div>
+  </div>
+
+  <div class="logout">
+    <a href="/logout">Logout</a>
+  </div>
+
+</body>
+</html>

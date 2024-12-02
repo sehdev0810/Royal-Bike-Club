@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify OTP</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #1e1e2f, #3b3b57); /* Dark gradient */
+      color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #29293d; /* Deep gray */
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      text-align: center;
+      border: 2px solid #4a90e2; /* Vibrant blue border */
+    }
+
+    .container h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #4a90e2; /* Vibrant blue */
+      font-weight: 700;
+    }
+
+    .container p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #ff6b6b; /* Bright red for error messages */
+    }
+
+    .container form label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #f3f3f3;
+      font-weight: 500;
+    }
+
+    .container form input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border: 2px solid #4a90e2; /* Vibrant blue border */
+      border-radius: 5px;
+      background: #1e1e2f;
+      color: #f3f3f3;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .container form input::placeholder {
+      color: #888; /* Light gray placeholder */
+    }
+
+    .container form input:focus {
+      border-color: #f3f3f3; /* Focus border color */
+      box-shadow: 0 0 10px #4a90e2; /* Vibrant glow effect */
+    }
+
+    .container form button {
+      background: #4a90e2; /* Vibrant blue button */
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .container form button:hover {
+      background: #1f78d1; /* Darker blue for hover */
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.6); /* Glow effect on hover */
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #a3a3a3;
+    }
+
+    footer a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verify Your OTP</h1>
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
+    <form action="/verify-otp" method="POST">
+      <label for="otp">Enter OTP:</label>
+      <input type="text" id="otp" name="otp" placeholder="6-digit OTP" required>
+      <button type="submit">Verify</button>
+    </form>
+    <footer>
+      <p>&copy; 2024 Royal Bike Club. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

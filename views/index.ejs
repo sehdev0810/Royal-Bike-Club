@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Bike Club</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Hero Section Enhancements */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1558981852-426c6c22a060?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+      background-size: cover;
+      height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: #4a148c;
+      color: #ffd700;
+      font-weight: bold;
+      padding: 12px 30px;
+      border-radius: 30px;
+    }
+
+    .btn-primary:hover {
+      background-color: #880e4f;
+    }
+
+    /* Navbar Customization */
+    .navbar {
+      background-color: #212121;
+    }
+
+    .navbar-brand {
+      color: #ffd700 !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar-brand:hover {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #ffd700 !important;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #fff !important;
+    }
+
+    /* Services Section */
+    .services-card, .review-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #212121;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .services-card:hover, .review-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Image Adjustments for Consistent Size */
+  .services-card img, .review-card img {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+  }
+
+  /* Card Body and Footer */
+  .services-card .card-body, .review-card .card-body {
+    padding: 20px;
+  }
+
+  .services-card h5, .review-card h5 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 10px;
+  }
+
+  .services-card p, .review-card p {
+    font-size: 1rem;
+    color: #bbb;
+  }
+
+  .services-card .btn-info {
+    background-color: #4a148c;
+    color: #ffd700;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .services-card .btn-info:hover {
+    background-color: #880e4f;
+    color: #fff;
+  }
+
+  /* Adjust Footer for Cards */
+  .card-footer {
+    background-color: transparent;
+    border-top: none;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Review Card Specific Styling */
+  .review-card {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #333, #212121);
+  }
+
+  .reviewer-name {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+  }
+    /* Footer Styling */
+    .footer {
+      background-color: #212121;
+      color: #fff;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #ffd700;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <!-- Logo/BrandName Left Side -->
+      <a class="navbar-brand" href="/">Royal Bike Club</a>
+
+      <!-- Search Bar -->
+      <form class="d-flex ms-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search bikes" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- Cart Button -->
+      <button class="btn btn-outline-primary ms-3">
+        <i class="bi bi-cart"></i> Cart
+      </button>
+
+      <!-- Toggler for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Check if user is logged in -->
+          <% if (user) { %>
+            <!-- Display Hello user and Logout -->
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hello, <%= user.name %></a>
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% if (user.role === 'admin') { %>
+              <!-- If admin, show admin dashboard link -->
+              <li class="nav-item">
+                <a class="nav-link" href="/admin-dashboard">Admin Dashboard</a>
+              </li>
+            <% } %>
+          <% } else { %>
+            <!-- If not logged in, show Login and Register links -->
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div>
+      <h1>Welcome to Royal Bike Club</h1>
+      <p>Your ride, your freedom</p>
+      <button class="btn btn-primary" onclick="window.location.href='/register'">Join Now</button>
+    </div>
+  </div>
+
+  <!-- Our Services Section -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Our Services</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card services-card h-100">
+          <img src="https://plus.unsplash.com/premium_photo-1687952845709-67cff21e466b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Bike Rentals">
+          <div class="card-body">
+            <h5 class="card-title">Bike Rentals</h5>
+            <p class="card-text">Rent a bike and explore the world around you. Affordable rates, available for all kinds of bikes.</p>
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn btn-info" onclick="window.location.href='/rentals'">Explore Rentals</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card services-card h-10">
+          <img src="https://images.unsplash.com/photo-1638003299152-dd1e3bf81fa5?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Bike Sales">
+          <div class="card-body">
+            <h5 class="card-title">Bike Sales</h5>
+            <p class="card-text">Buy the best bikes from top brands. We offer a wide range of bikes suited to your needs.</p>
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn btn-info" onclick="window.location.href='/bikes'">View Bikes</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card services-card h-10">
+          <img src="https://images.unsplash.com/photo-1558980664-2cd663cf8dde?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Road Trips">
+          <div class="card-body">
+            <h5 class="card-title">Road Trips</h5>
+            <p class="card-text">Join us for amazing road trips. Choose your destination and let us handle the rest.</p>
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn btn-info" onclick="window.location.href='/trips'">Book a Trip</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Reviews Section -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Customer Reviews</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card review-card h-100">
+          <p>"Royal Bike Club made my trip unforgettable! The bike was in perfect condition, and the team was super helpful."</p>
+          <div class="reviewer-name">John Doe</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card review-card h-100">
+          <p>"Fantastic experience renting a bike! Easy booking, great customer service, and the best bikes around."</p>
+          <div class="reviewer-name">Jane Smith</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card review-card h-100">
+          <p>"A memorable road trip with Royal Bike Club! They took care of everything, and I could focus on enjoying the ride."</p>
+          <div class="reviewer-name">Alex Johnson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <p>&copy; 2024 Royal Bike Club. All rights reserved.</p>
+    <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Bootstrap JS (required for responsive features) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

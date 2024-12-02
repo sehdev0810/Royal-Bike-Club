@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Royal Bike Club</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Custom Styles for Register Page */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1641421635837-cc06d5fbef92?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+      z-index: -1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      /* background-color: rgba(74, 20, 140, 0.9); */
+      margin: 0;
+      padding: 0.5rem 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #ffd700;
+      font-weight: bold;
+    }
+    form{
+      color: #fff;
+    }
+
+    form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.136);
+      color: #fff;
+    }
+
+    form input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #ffd700;
+    }
+
+    form button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #ffd700;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: rgb(87, 12, 12);
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #ffcc00;
+    }
+
+    footer {
+      text-align: center;
+      /* background: rgba(74, 20, 140, 0.9); */
+      color: #ffd700;
+      padding: 1rem 0;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      nav ul li {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Registration Form -->
+  <div class="container">
+    <h2>Register Your Account</h2>
+    <form action="/register" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Royal Bike Club. All rights reserved.</p>
+    <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
